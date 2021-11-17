@@ -14,10 +14,6 @@ class Doctor extends Model
         'years'
     ];
 
-    protected $hidden=[
-        'created_at',
-        'updated_at'
-
-    ];
+    
    
 }

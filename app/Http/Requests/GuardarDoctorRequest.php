@@ -24,9 +24,9 @@ class GuardarDoctorRequest extends FormRequest
     public function rules()
     {
         return [
-            'names'=>'required',
-            'surnames'=>'required',
-            'years'=>'required'
+            "names"=>"required",
+            "surnames"=>"required",
+            "years"=>"required"
         ];
     }
 }
