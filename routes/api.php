@@ -15,9 +15,9 @@ use App\Http\Controllers\DoctorController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
 
 /*Route::get('/test',function (Request $request) {
     return "Hola mundo";
@@ -25,5 +25,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });*/
 
 //Route::apiResource('doctor', DoctorController::class);
-    Route::get('doctors',[DoctorController::class,'index']);
+    /*Route::get('doctors',[DoctorController::class,'index']);
     Route::post('doctors',[DoctorController::class,'store']);
+    Route::get('doctors/{doctor}',[DoctorController::class,'show']);
+    Route::put('doctors/{doctor}',[DoctorController::class,'update']);
+    Route::delete('doctors/{doctor}',[DoctorController::class,'destroy']);*/
+Route::apiResource('doctor',DoctorController::class);
+Route::apiResource('estudiante',\App\Http\Controllers\EstudianteController::class);

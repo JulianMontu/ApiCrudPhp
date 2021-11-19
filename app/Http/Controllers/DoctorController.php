@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\GuardarDoctorRequest;
+use App\Http\Resources\DoctorResource;
 use App\Models\Doctor;
 //use App\Http\Request\GuardarDoctorRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Migrations\Migration;
 
 class DoctorController extends Controller
 {
@@ -15,7 +18,7 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        return Doctor::all();
+        return DoctorResource::collection(Doctor::all());
     }
 
     /**
@@ -24,13 +27,18 @@ class DoctorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(GuardarDoctorRequest $request)
+    public function store(Request $request)
     {
-        Doctor::create($request->all());
-        return response()->json([
+
+        /*return response()->json([
             'res'=>true,
             'msg'=>'Doctor guardado correctamente'
-        ]);
+        ]);*/
+        //return new  DoctorResource(Doctor::create($request->all()));
+        $datos= Doctor::create($request->all());
+        return response()->json($datos);
+
+
     }
 
     /**
@@ -39,9 +47,10 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Doctor $doctor)
     {
-        //
+        //return response()->json(['res'=>true, 'doctor'=>$doctor]);
+        return new DoctorResource($doctor);
     }
 
     /**
@@ -51,9 +60,10 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Doctor $doctor)
     {
-        //
+        dd($doctor->update($request->all()));
+        return new DoctorResource($doctor);
     }
 
     /**
@@ -62,8 +72,9 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Doctor $doctor)
     {
-        //
+        $doctor->delete();
+        return new DoctorResource($doctor);
     }
 }
