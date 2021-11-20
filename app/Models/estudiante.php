@@ -15,4 +15,8 @@ class estudiante extends Model
         'edad'
 
     ];
+    protected $hidden=[
+        'created_at',
+        'updated_at'
+    ];
 }

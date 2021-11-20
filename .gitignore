@@ -13,3 +13,12 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+./app/Http/Controllers/DoctorController.php
+./app/Http/Request
+./app/Http/Resource
+./app/Models/Categoria.php
+./app/Models/Cita.php
+./app/Models/Doctor.php
+./app/Models/Paciente.php
+./app/Models/Producto.php
+
